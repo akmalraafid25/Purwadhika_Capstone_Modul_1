@@ -229,6 +229,7 @@ def insertData():
                         break
                     case _:
                         print("Wrong Input, Please Input Selection That Are Available!")
+
 def UpdateMenu():
     while True:
         print("\n=================")
@@ -248,16 +249,7 @@ def UpdateMenu():
             case _:
                 print("Wrong Input, Please Input Selection That Are Available!")
 
-def exportData():
-    with open(filepath, 'w', encoding='utf-8') as file:
-        file.write(json.dumps(dataMobil))
-
-def saveData(car):
-    for i in range(len(car)):
-        dataMobil.append(car[i])
-    return dataMobil, print("Car Details Saved Successfully!")
-
-                
+              
 def findData():
     idx=0
     while True:
@@ -302,7 +294,7 @@ def changeData(i):
                                     exportData()
                                     break
                                 else:
-                                    print("Column name incorrect")
+                                    print("Column name is incorrect!")
                             case "2":
                                 break
                             case _:
@@ -343,7 +335,6 @@ def deleteData(i):
         menu_input=input("Menu Selection:")
         match menu_input:
             case "1":
-                print(i)
                 dataMobil.pop(i)
                 print('Data deleted succesfully!')
                 break
@@ -351,6 +342,15 @@ def deleteData(i):
                 break
             case _:
                 print("Wrong Input, Please try again!")
+
+def exportData():
+    with open(filepath, 'w', encoding='utf-8') as file:
+        file.write(json.dumps(dataMobil))
+
+def saveData(car):
+    for i in range(len(car)):
+        dataMobil.append(car[i])
+    return dataMobil, print("Car Details Saved Successfully!")
 
 #Main Function
 dataMobil=loadData()       
