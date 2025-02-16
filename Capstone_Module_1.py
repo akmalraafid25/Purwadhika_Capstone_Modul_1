@@ -293,12 +293,16 @@ def changeData(i):
                         decision_input=input("\nAre you sure to edit this record? \n1. Yes\n2. No\nMenu Selection: ")
                         match decision_input:
                             case "1":
-                                if column_input == "Tahun":
-                                    dataMobil[i][column_input]=int(data_input)
+                                if column_input in dataMobil[i].keys():
+                                    if column_input == "Tahun":
+                                        dataMobil[i][column_input]=int(data_input)
+                                    else:
+                                        dataMobil[i][column_input]=data_input
+                                    print("Changes Saved!")
+                                    exportData()
+                                    break
                                 else:
-                                    dataMobil[i][column_input]=data_input
-                                print("Changes Saved!")
-                                exportData()
+                                    print("Column name incorrect")
                             case "2":
                                 break
                             case _:
