@@ -1,5 +1,5 @@
 from tabulate import tabulate
-import json
+import jsonx
 
 filepath='data_rental.txt'
 
@@ -79,13 +79,6 @@ def MainMenu():
             case _:
                 print("Wrong Input, Please Input Selection That Are Available!")
 
-def filtering(filter_options):
-    filteredData=[]
-    for i in range(len(dataMobil)):
-        if filter_options in dataMobil[i].values():
-            filteredData.append(dataMobil[i])
-    return filteredData
-                
 def ReadMenu():
     print("=================")
     print(" DISPLAY CARS   ||")
@@ -111,84 +104,54 @@ def ReadMenu():
                 else:
                     print(tabulate(dataMobil, headers="keys", tablefmt='rst', showindex='always'))
             case "2":
-                if dataMobil:
-                    filter_options=input("Insert Registration ID: ")
-                    filteredData=filtering(filter_options)
-                    if filteredData:
-                        print(tabulate(filteredData, headers="keys", tablefmt='rst', showindex='always'))
-                    else:
-                        print("=================")
-                        print("Data Doesn't Exist!")
-                        print("=================")
+                filter_options=input("Insert Registration ID: ")
+                filteredData=filtering(filter_options)
+                if filteredData:
+                    print(tabulate(filteredData, headers="keys", tablefmt='rst', showindex='always'))
                 else:
                     print("=================")
                     print("Data Doesn't Exist!")
                     print("=================")
             case "3":
-                if dataMobil:
-                    filteredData=filtering("Tersedia")
-                    if filteredData:
-                        print(tabulate(filteredData, headers="keys", tablefmt='rst', showindex='always'))
-                    else:
-                        print("=================")
-                        print("Data Doesn't Exist!")
-                        print("=================")
+                filteredData=filtering("Tersedia")
+                if filteredData:
+                    print(tabulate(filteredData, headers="keys", tablefmt='rst', showindex='always'))
                 else:
                     print("=================")
                     print("Data Doesn't Exist!")
                     print("=================")
             case "4":
-                if dataMobil:
-                    filter_options=input("Insert Car License Plate: ")
-                    filteredData=filtering(filter_options)
-                    if filteredData:
-                        print(tabulate(filteredData, headers="keys", tablefmt='rst', showindex='always'))
-                    else:
-                        print("=================")
-                        print("Data Doesn't Exist!")
-                        print("=================")
+                filter_options=input("Insert Car License Plate: ")
+                filteredData=filtering(filter_options)
+                if filteredData:
+                    print(tabulate(filteredData, headers="keys", tablefmt='rst', showindex='always'))
                 else:
                     print("=================")
                     print("Data Doesn't Exist!")
                     print("=================")
             case "5":
-                if dataMobil:
-                    filter_options=input("Insert Fuel Type: ")
-                    filteredData=filtering(filter_options)
-                    if filteredData:
-                        print(tabulate(filteredData, headers="keys", tablefmt='rst', showindex='always'))
-                    else:
-                        print("=================")
-                        print("Data Doesn't Exist!")
-                        print("=================")
+                filter_options=input("Insert Fuel Type: ")
+                filteredData=filtering(filter_options)
+                if filteredData:
+                    print(tabulate(filteredData, headers="keys", tablefmt='rst', showindex='always'))
                 else:
                     print("=================")
                     print("Data Doesn't Exist!")
                     print("=================")
             case "6":
-                if dataMobil:
-                    filter_options=input("Insert Car Brand: ")
-                    filteredData=filtering(filter_options)
-                    if filteredData:
-                        print(tabulate(filteredData, headers="keys", tablefmt='rst', showindex='always'))
-                    else:
-                        print("=================")
-                        print("Data Doesn't Exist!")
-                        print("=================")
+                filter_options=input("Insert Car Brand: ")
+                filteredData=filtering(filter_options)
+                if filteredData:
+                    print(tabulate(filteredData, headers="keys", tablefmt='rst', showindex='always'))
                 else:
                     print("=================")
                     print("Data Doesn't Exist!")
                     print("=================")
             case "7":
-                if dataMobil:
-                    filter_options=input("Insert Car Year: ")
-                    filteredData=filtering(filter_options)
-                    if filteredData:
-                        print(tabulate(filteredData, headers="keys", tablefmt='rst', showindex='always'))
-                    else:
-                        print("=================")
-                        print("Data Doesn't Exist!")
-                        print("=================")
+                filter_options=input("Insert Car Year: ")
+                filteredData=filtering(filter_options)
+                if filteredData:
+                    print(tabulate(filteredData, headers="keys", tablefmt='rst', showindex='always'))
                 else:
                     print("=================")
                     print("Data Doesn't Exist!")
@@ -198,6 +161,13 @@ def ReadMenu():
                 break
             case _:
                 print("Wrong Input, Please Input Selection That Are Available!")
+                
+def filtering(filter_options):
+    filteredData=[]
+    for i in range(len(dataMobil)):
+        if filter_options in dataMobil[i].values():
+            filteredData.append(dataMobil[i])
+    return filteredData
                 
 def CreateMenu():
     while True:
