@@ -1,5 +1,5 @@
 from tabulate import tabulate
-import jsonx
+import json
 
 filepath='data_rental.txt'
 
@@ -229,16 +229,6 @@ def insertData():
                         break
                     case _:
                         print("Wrong Input, Please Input Selection That Are Available!")
-
-def exportData():
-    with open(filepath, 'w', encoding='utf-8') as file:
-        file.write(json.dumps(dataMobil))
-
-def saveData(car):
-    for i in range(len(car)):
-        dataMobil.append(car[i])
-    return dataMobil, print("Car Details Saved Successfully!")
-
 def UpdateMenu():
     while True:
         print("\n=================")
@@ -257,6 +247,16 @@ def UpdateMenu():
                 break
             case _:
                 print("Wrong Input, Please Input Selection That Are Available!")
+
+def exportData():
+    with open(filepath, 'w', encoding='utf-8') as file:
+        file.write(json.dumps(dataMobil))
+
+def saveData(car):
+    for i in range(len(car)):
+        dataMobil.append(car[i])
+    return dataMobil, print("Car Details Saved Successfully!")
+
                 
 def findData():
     idx=0
